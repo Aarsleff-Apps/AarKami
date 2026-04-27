@@ -7,8 +7,8 @@ One-page quick reference. Scan before filling a template or tweaking a detail. F
 1. Page background `#f5f4ed` (parchment), never pure white
 2. Keep page background fixed at parchment `#f5f4ed`; all other colors come from the approved palette
 3. Primary palette: `#005fae`, `#122459`, `#b6e1f2`, `#ffffff`; supplementary: `#e4002b`, `#f28705`
-4. English: Calibri for headlines, body, and UI
-5. Calibri weight stays restrained; avoid heavy bold
+4. English: serif for headlines and body. Sans for UI only
+5. Serif weight locked at 500, no bold
 6. Line-height: headlines 1.1-1.3 / dense 1.4-1.45 / reading 1.5-1.55
 7. Letter-spacing: English body 0; tracking for short labels only
 8. Tag backgrounds solid hex, no rgba (WeasyPrint double-rectangle bug)
@@ -72,13 +72,13 @@ Minimum floor: web text >= 12px, PDF text >= 9pt.
 
 ## Font stacks
 
-Use Calibri for the entire page. `--sans` always equals `var(--serif)`.
+Use a single serif for the entire page. `--sans` always equals `var(--serif)`.
 
 English:
 
 ```css
---serif: Calibri, Carlito, Arial,
-         Helvetica, sans-serif;
+--serif: Charter, Georgia, Palatino,
+         "Times New Roman", serif;
 --sans:  var(--serif);
 --mono:  "JetBrains Mono", "SF Mono", "Fira Code",
          Consolas, Monaco, monospace;
@@ -320,4 +320,4 @@ Page 2 font sizes stay at template defaults. The density variant only tightens p
 | Cover               | Display heading + right-aligned author/date + heavy whitespace |
 
 
-Not on the table -> first principles: **Calibri carries authority through restraint, parchment keeps the page calm, deep blue structures the page, bright blue directs attention**.
+Not on the table -> first principles: **serif carries authority, sans carries utility, warm gray carries rhythm, ink-blue carries focus**.
