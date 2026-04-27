@@ -5,8 +5,8 @@ One-page quick reference. Scan before filling a template or tweaking a detail. F
 ## Ten invariants
 
 1. Page background `#f5f4ed` (parchment), never pure white
-2. Single accent: ink-blue `#1B365D`
-3. All grays **warm-toned** (yellow-brown undertone), no cool blue-gray
+2. Keep page background fixed at parchment `#f5f4ed`; all other colors come from the approved palette
+3. Primary palette: `#005fae`, `#122459`, `#b6e1f2`, `#ffffff`; supplementary: `#e4002b`, `#f28705`
 4. English: Calibri for headlines, body, and UI
 5. Calibri weight stays restrained; avoid heavy bold
 6. Line-height: headlines 1.1-1.3 / dense 1.4-1.45 / reading 1.5-1.55
@@ -29,33 +29,25 @@ One-page quick reference. Scan before filling a template or tweaking a detail. F
 ## Color
 
 
-| Role         | Hex           | Use                                                 |
-| ------------ | ------------- | --------------------------------------------------- |
-| Parchment    | `#f5f4ed`     | Page background                                     |
-| Ivory        | `#faf9f5`     | Card / lifted container                             |
-| Warm Sand    | `#e8e6dc`     | Button / interactive surface                        |
-| Dark Surface | `#30302e`     | Dark container                                      |
-| Deep Dark    | `#141413`     | Dark page background                                |
-| **Brand**    | `**#1B365D`** | **Accent · CTA · title left bar (≤ 5% of surface)** |
-| Ink Light    | `#2D5A8A`     | Links on dark surfaces                              |
-| Near Black   | `#141413`     | Primary text                                        |
-| Dark Warm    | `#3d3d3a`     | Secondary text · table headers · links              |
-| Olive        | `#504e49`     | Subtext · descriptions                              |
-| Stone        | `#6b6a64`     | Tertiary · metadata                                 |
-| Border       | `#e8e6dc`     | Primary border · section divider                    |
-| Border Soft  | `#e5e3d8`     | Secondary border · row separator                    |
+| Role | Hex | Use |
+| --- | --- | --- |
+| Parchment | `#f5f4ed` | Fixed page background |
+| Primary Blue | `#005fae` | Links, CTA accents, chart primary series, section markers |
+| Deep Blue | `#122459` | Headings, key text emphasis, borders, dividers, dark blocks |
+| Light Blue | `#b6e1f2` | Tags, fills, soft panels, low-contrast chart areas |
+| White | `#ffffff` | Card background on parchment, reversed text on blue |
+| Supplementary Red | `#e4002b` | Alerts, negative deltas, critical flags |
+| Supplementary Orange | `#f28705` | Warnings, priority markers, highlight moments |
 
+Rules:
+- `#f5f4ed` stays as the page background. Do not replace it with `#ffffff`.
+- Use `#122459` and `#005fae` as the core visual system.
+- Use `#b6e1f2` for quiet emphasis and separation.
+- Use `#e4002b` and `#f28705` sparingly. If they appear often, the layout is over-signaling.
 
-**rgba -> solid** (parchment base + ink-blue):
+**Default light fill**
 
-
-| Alpha    | Solid                       |
-| -------- | --------------------------- |
-| 0.08     | `#EEF2F7`                   |
-| 0.14     | `#E4ECF5`                   |
-| **0.18** | `**#E4ECF5`** ← default tag |
-| 0.22     | `#D0DCE9`                   |
-| 0.30     | `#D6E1EE`                   |
+Use `#b6e1f2` for tags, soft panels, and pale emphasis areas instead of `rgba()`.
 
 
 ## Type (print pt)
@@ -143,7 +135,7 @@ English:
 
 ```css
 .tag {
-  background: #EEF2F7;            /* 0.08 equivalent */
+  background: #b6e1f2;
   color: var(--brand);
   font-size: 9pt; font-weight: 600;
   padding: 1pt 5pt;
@@ -242,7 +234,7 @@ Twelve built-in diagram types. Extract the `<svg>` block and embed in a `<figure
 
 Usage: extract the `<svg>` block from the HTML file and paste into the template's `<figure>` container.
 
-**Data chart colors**: primary series `#1B365D` · secondary `#504e49` → `#6b6a64` → `#b8b7b0` → `#d4d3cd` → `#EEF2F7`.
+**Data chart colors**: primary series `#005fae` · dark emphasis `#122459` · soft comparison `#b6e1f2` · alert `#e4002b` · warning `#f28705` · negative space `#ffffff`.
 
 **Editing data**: only modify elements between `<!-- DATA START -->` / `<!-- DATA END -->`, leave CSS untouched. All coordinates must be divisible by 4.
 
@@ -250,9 +242,9 @@ Usage: extract the `<svg>` block from the HTML file and paste into the template'
 
 Alternate light/dark rhythm: add `.sd-alt` to any section container.
 
-- Background switches to `--deep-dark` (`#141413`)
-- Body text switches to `--warm-silver` (`#b0aea5`)
-- Headings switch to `--ivory`
+- Background switches to deep blue `#122459`
+- Body text switches to `#ffffff` or `#b6e1f2`
+- Headings switch to `#ffffff`
 - Appropriate for: section-level light/dark alternation in long-doc / portfolio
 - Restriction: showcase pages only, never in print templates
 
@@ -328,4 +320,4 @@ Page 2 font sizes stay at template defaults. The density variant only tightens p
 | Cover               | Display heading + right-aligned author/date + heavy whitespace |
 
 
-Not on the table -> first principles: **Calibri carries authority through restraint, warm gray carries rhythm, ink-blue carries focus**.
+Not on the table -> first principles: **Calibri carries authority through restraint, parchment keeps the page calm, deep blue structures the page, bright blue directs attention**.

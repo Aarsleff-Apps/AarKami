@@ -1,13 +1,13 @@
 ---
 name: kami
-description: 'Typeset professional documents in English only: resumes, one-pagers, white papers, letters, portfolios, slide decks. Warm parchment, ink-blue accent, Calibri-led hierarchy. Triggers on "build me a resume / make a one-pager / design a slide deck / turn this into a PDF / make this presentable".'
+description: 'Typeset professional documents in English only: resumes, one-pagers, white papers, letters, portfolios, slide decks. Warm parchment, structured blue palette, Calibri-led hierarchy. Triggers on "build me a resume / make a one-pager / design a slide deck / turn this into a PDF / make this presentable".'
 ---
 
 # kami · 紙
 
 **紙 · かみ** - the paper your deliverables land on.
 
-Good content deserves good paper. One design language across eight document types: warm parchment canvas, ink-blue accent, Calibri-led hierarchy, tight editorial rhythm.
+Good content deserves good paper. One design language across eight document types: warm parchment canvas, structured blue palette, Calibri-led hierarchy, tight editorial rhythm.
 
 Part of `Kaku · Waza · Kami` - Kaku writes code, Waza drills habits, **Kami delivers documents**.
 
@@ -93,7 +93,7 @@ Confirm the materials that make the subject recognizable before layout:
 | Logo | Any branded document | User file or official SVG/PNG |
 | Product image | Physical product / venue / object | Official image, user image, or marked gap |
 | UI screenshot | App / SaaS / website / tool | Current screenshot, official product image, or user capture |
-| Brand colors | Branded one-pager / portfolio / deck | Official value, extracted asset value, or keep kami ink-blue |
+| Brand colors | Branded one-pager / portfolio / deck | Official value, extracted asset value, or keep the kami palette below |
 | Fonts | Only if brand typography matters | Official font, close system fallback, or kami default |
 
 If a required item is missing, use a compact gap table and ask once. Do not replace missing material with generic imagery, approximate logo drawings, or invented values.
@@ -198,6 +198,19 @@ Source templates intentionally keep `{{...}}` fields. Run placeholder checks on 
 
 Visual anomalies (tag double rectangle, font fallback, page break issues) -> `production.md` Part 4.
 
+## Colors
+
+- Page background is fixed: `#f5f4ed` parchment. Do not change it to white or brand color.
+- Primary colors allowed: `#005fae`, `#122459`, `#b6e1f2`, `#ffffff`
+- Supplementary colors allowed: `#e4002b`, `#f28705`
+- Default roles:
+  - `#122459` for primary text emphasis, headings, dividers, and high-contrast UI moments
+  - `#005fae` for links, CTA accents, chart primary series, and section markers
+  - `#b6e1f2` for fills, tags, soft panels, and low-contrast data areas
+  - `#ffffff` for cards on parchment and reversed text on dark blue
+  - `#e4002b` and `#f28705` for sparse callouts only: alerts, negative deltas, flags, warnings, or priority markers
+- Keep supplementary colors rare. They should signal exceptions, not become a second brand system.
+
 ## Fonts
 
 **English**
@@ -215,7 +228,7 @@ When the user gives **vague visual feedback** ("looks off", "not elegant"), do n
 |---|---|
 | "too cramped" | Which element? Line-height (current: X)? Padding (current: Y)? Page margin? |
 | "too loose" | Same direction, reversed |
-| "color feels wrong" | Which element? Brand blue overused? A gray reading too cool? |
+| "color feels wrong" | Which element? Is `#122459` too heavy, `#005fae` too loud, or are supplementary colors overused? |
 | "not polished" | Font rendering? Alignment? Whitespace distribution? Hierarchy unclear? |
 | "unprofessional" | Content wording? Or layout (alignment, consistency)? |
 
@@ -229,7 +242,7 @@ Never say "I'll adjust the spacing" without naming the exact property and its ne
 
 - User explicitly wants Material / Fluent / Tailwind default - different design language
 - Need dark / cyberpunk / futurist aesthetic (this is deliberately anti-future)
-- Need saturated multi-color (this has one accent)
+- Need saturated multi-color beyond the approved palette
 - Need cartoon / animation / illustration style (this is editorial)
 - Web dynamic app UI (this is for print / static documents)
 
