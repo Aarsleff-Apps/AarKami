@@ -29,30 +29,21 @@ One-page quick reference. Scan before filling a template or tweaking a detail. F
 ## Color
 
 
-| Role | Hex | Use |
-| --- | --- | --- |
-| Parchment | `#f5f4ed` | Fixed page background |
-| Ivory |	`#faf9f5` |	Card / lifted container |
-| Primary Blue | `#005fae` | Links, CTA accents, chart primary series, section markers |
-| Deep Blue | `#122459` | Headings, key text emphasis, borders, dividers, dark blocks |
-| Light Blue | `#b6e1f2` | Tags, fills, soft panels, low-contrast chart areas |
-| White | `#ffffff` | Card background on parchment, reversed text on blue |
-| Supplementary Red | `#e4002b` | Alerts, negative deltas, critical flags |
-| Supplementary Orange | `#f28705` | Warnings, priority markers, highlight moments |
-| Border | `#e8e6dc` | Primary border · section divider |
-| Border Soft |	`#e5e3d8` | Secondary border · row separator |
-| Near Black | `#141413` | Primary text |
-
-
-Rules:
-- `#f5f4ed` stays as the page background. Do not replace it with `#ffffff`.
-- Use `#122459` and `#005fae` as the core visual system.
-- Use `#b6e1f2` for quiet emphasis and separation.
-- Use `#e4002b` and `#f28705` sparingly. If they appear often, the layout is over-signaling.
-
-**Default light fill**
-
-Use `#b6e1f2` for tags, soft panels, and pale emphasis areas instead of `rgba()`.
+| Role         | Hex           | Use                                                 |
+| ------------ | ------------- | --------------------------------------------------- |
+| Parchment    | `#f5f4ed`     | Page background                                     |
+| Ivory        | `#faf9f5`     | Card / lifted container                             |
+| Warm Sand    | `#e8e6dc`     | Button / interactive surface                        |
+| Dark Surface | `#30302e`     | Dark container                                      |
+| Deep Dark    | `#141413`     | Dark page background                                |
+| **Brand**    | `**#005fae`** | **Accent · CTA · title left bar (≤ 5% of surface)** |
+| Ink Light    | `#2D5A8A`     | Links on dark surfaces                              |
+| Near Black   | `#141413`     | Primary text                                        |
+| Dark Warm    | `#3d3d3a`     | Secondary text · table headers · links              |
+| Olive        | `#504e49`     | Subtext · descriptions                              |
+| Stone        | `#6b6a64`     | Tertiary · metadata                                 |
+| Border       | `#e8e6dc`     | Primary border · section divider                    |
+| Border Soft  | `#e5e3d8`     | Secondary border · row separator                    |
 
 
 ## Type (print pt)
