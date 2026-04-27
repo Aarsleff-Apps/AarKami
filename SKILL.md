@@ -1,6 +1,6 @@
 ---
 name: kami
-description: 'Typeset professional documents: resumes, one-pagers, white papers, letters, portfolios, slide decks. Warm parchment, ink-blue accent, serif-led hierarchy. CN uses TsangerJinKai02, EN uses Charter, JA uses YuMincho (best-effort). Triggers on "做 PDF / 排版 / 一页纸 / 白皮书 / 作品集 / 简历 / PPT / slides", or "build me a resume / make a one-pager / design a slide deck / turn this into a PDF / make this presentable".'
+description: 'Typeset professional documents in English only: resumes, one-pagers, white papers, letters, portfolios, slide decks. Warm parchment, ink-blue accent, serif-led hierarchy. Triggers on "build me a resume / make a one-pager / design a slide deck / turn this into a PDF / make this presentable".'
 ---
 
 # kami · 紙
@@ -11,33 +11,32 @@ Good content deserves good paper. One design language across eight document type
 
 Part of `Kaku · Waza · Kami` - Kaku writes code, Waza drills habits, **Kami delivers documents**.
 
-## Step 1 · Decide the language
+## Step 1 · Use English only
 
-**Match the user's language.** Chinese -> `*.html` / `slides.py`. English -> `*-en.html` / `slides-en.py`. Japanese -> CJK path (`.html` / `slides.py`) as best-effort, JP Mincho first, visual QA before shipping. Reference docs are shared English specs.
+Always choose the English templates and slide source:
+- HTML: `*-en.html`
+- Slides: `slides-en.py`
 
-When ambiguous (e.g. a one-word command like "resume"), ask a one-liner rather than guess.
+Do not switch to Chinese, Japanese, or other language paths. If the user sends non-English text, ask them to provide the request in English.
 
 | User language | HTML templates | Slides template |
 |---|---|---|
-| Chinese (primary) | `*.html` | `slides.py` |
 | English | `*-en.html` | `slides-en.py` |
-| Japanese (best-effort) | `*.html` | `slides.py` |
-| Other languages (best-effort) | choose CJK or EN path by script coverage, then verify manually | choose `slides.py` or `slides-en.py`, then verify manually |
 
 Always use `CHEATSHEET.md` and `references/*.md` for design, writing, production, and diagram guidance.
 
 ## Step 2 · Pick the document type
 
-| User says | Document | CN template | EN template |
-|---|---|---|---|
-| "one-pager / 方案 / 执行摘要 / exec summary" | One-Pager | `one-pager.html` | `one-pager-en.html` |
-| "white paper / 白皮书 / 长文 / 年度总结 / technical report" | Long Doc | `long-doc.html` | `long-doc-en.html` |
-| "formal letter / 信件 / 辞职信 / 推荐信 / memo" | Letter | `letter.html` | `letter-en.html` |
-| "portfolio / 作品集 / case studies" | Portfolio | `portfolio.html` | `portfolio-en.html` |
-| "resume / resume / CV / 简历" | Resume | `resume.html` | `resume-en.html` |
-| "slides / PPT / deck / 演示" | Slides | `slides.py` | `slides-en.py` |
-| "个股研报 / equity report / 估值分析 / investment memo / 股票分析" | Equity Report | `equity-report.html` | `equity-report-en.html` |
-| "更新日志 / changelog / release notes / 版本记录" | Changelog | `changelog.html` | `changelog-en.html` |
+| User says | Document | EN template |
+|---|---|---|
+| "one-pager / exec summary" | One-Pager | `one-pager-en.html` |
+| "white paper / technical report" | Long Doc | `long-doc-en.html` |
+| "formal letter / memo" | Letter | `letter-en.html` |
+| "portfolio / case studies" | Portfolio | `portfolio-en.html` |
+| "resume / CV" | Resume | `resume-en.html` |
+| "slides / PPT / deck" | Slides | `slides-en.py` |
+| "equity report / investment memo" | Equity Report | `equity-report-en.html` |
+| "changelog / release notes" | Changelog | `changelog-en.html` |
 
 > Long deck (>20 slides): also read Deck Recipe (design.md section 8).
 
@@ -179,8 +178,8 @@ Do not ask the user which format to export. Decide from context:
 |---|---|---|
 | Any document request | HTML + PDF | PDF is the default deliverable, HTML is the source |
 | Slides / PPT / deck | HTML + PDF + PPTX | Presentations need a projectable format |
-| "分享" / "发朋友圈" / "share" / "post" / "preview" | + PNG | Social platforms and messaging need images |
-| "嵌入" / "插图" / "embed in another doc" | PNG only | Used as material inside other documents |
+| "share" / "post" / "preview" | + PNG | Social platforms and messaging need images |
+| "embed in another doc" | PNG only | Used as material inside other documents |
 | User explicitly says a format | Follow the user | Explicit request overrides auto-selection |
 
 PDF always ships. PPTX follows slides. PNG follows sharing context. The user should never need to think about formats.
@@ -201,51 +200,24 @@ Visual anomalies (tag double rectangle, font fallback, page break issues) -> `pr
 
 ## Fonts
 
-**Chinese**
-- Main serif: TsangerJinKai02-W04.ttf (400 weight) + TsangerJinKai02-W05.ttf (500 weight, real bold)
-- Templates use dual @font-face declarations: W04 for body text, W05 for headings
-- Both files are commercial fonts. Keep them available in the repository for local preview and CDN fallback, but do not bundle them inside Claude Desktop skill ZIPs
-- Fallback chain baked into templates: Source Han Serif SC -> Noto Serif CJK SC -> Songti SC -> STSong -> Georgia
-
-**Japanese (best-effort)**
-- Uses CJK template path, no dedicated `-ja` templates yet
-- JP Mincho-first stack: YuMincho -> Hiragino Mincho ProN -> Noto Serif CJK JP -> Source Han Serif JP -> TsangerJinKai02 -> serif
-- Visually verify line breaks, punctuation rhythm, and emphasis weight before shipping
-
 **English**
 - Single serif: Charter (system-bundled, macOS/iOS), used for both headlines and body
 - No separate sans: `--sans: var(--serif)`, one font per page
 - Fallback: Georgia (cross-platform) / Palatino / Times New Roman
 
-Font files next to HTML with relative `@font-face` paths is the most stable setup. `scripts/package-skill.sh` excludes TsangerJinKai TTFs from the Claude Desktop ZIP.
-
-**Font auto-recovery (Claude Desktop)**
-
-Before building Chinese documents, check font files. If missing, download into `assets/fonts/`:
-
-```bash
-# Check
-test -f assets/fonts/TsangerJinKai02-W04.ttf || {
-  curl -fsSL "https://cdn.jsdelivr.net/gh/tw93/Kami@main/assets/fonts/TsangerJinKai02-W04.ttf" \
-    -o assets/fonts/TsangerJinKai02-W04.ttf
-  curl -fsSL "https://cdn.jsdelivr.net/gh/tw93/Kami@main/assets/fonts/TsangerJinKai02-W05.ttf" \
-    -o assets/fonts/TsangerJinKai02-W05.ttf
-}
-```
-
-Run once before building. If network is unavailable, WeasyPrint falls back to Source Han Serif SC.
+Font files next to HTML with relative `@font-face` paths is the most stable setup. `scripts/package-skill.sh` excludes any non-English commercial font files from the Claude Desktop ZIP.
 
 ## Feedback protocol
 
-When the user gives **vague visual feedback** ("looks off", "太挤了", "not elegant"), do not guess. Ask back with current values:
+When the user gives **vague visual feedback** ("looks off", "not elegant"), do not guess. Ask back with current values:
 
 | User says | Ask about |
 |---|---|
-| "太挤了" / "too cramped" | Which element? Line-height (current: X)? Padding (current: Y)? Page margin? |
-| "太松了" / "too loose" | Same direction, reversed |
-| "颜色不对" / "color feels wrong" | Which element? Brand blue overused? A gray reading too cool? |
-| "不够好看" / "not polished" | Font rendering? Alignment? Whitespace distribution? Hierarchy unclear? |
-| "看着不专业" / "unprofessional" | Content wording? Or layout (alignment, consistency)? |
+| "too cramped" | Which element? Line-height (current: X)? Padding (current: Y)? Page margin? |
+| "too loose" | Same direction, reversed |
+| "color feels wrong" | Which element? Brand blue overused? A gray reading too cool? |
+| "not polished" | Font rendering? Alignment? Whitespace distribution? Hierarchy unclear? |
+| "unprofessional" | Content wording? Or layout (alignment, consistency)? |
 
 Template response: "X is currently set to Y. Would you like (a) [specific alternative within spec] or (b) [another option]?"
 
