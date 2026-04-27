@@ -148,6 +148,7 @@ The full spec files for reference:
 - Copy the template into your working directory; don't write HTML from scratch
 - **CSS stays untouched**, only edit the body
 - Content follows `writing.md`: data over adjectives, distinctive phrasing over industry clichés
+- Format all large numbers with comma thousands separators (`5,000`, `125,000`, `$2,500,000`) and always use a period for decimals (`3.5`, `12.75%`, `$1.25M`). Never use spaces, full-width punctuation, or locale-specific decimal commas in numeric values.
 - **Before filling, read the quality bar for your document type** in `writing.md` section "Quality bars by document type". Structure is necessary but not sufficient: a resume bullet needs Action + Scope + Result + Business Outcome; an equity report needs variant perception + quantified catalysts; slides need assertion-evidence titles. Meeting the quality bar is as important as filling every placeholder.
 
 ### Fill PDF metadata (WeasyPrint reads these into the PDF)

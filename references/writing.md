@@ -335,10 +335,14 @@ Across any document:
 |---|---|
 | 5,000+ | 5000+ (missing thousands separator) |
 | 5,000+ | 5，000+ (full-width comma in a metric) |
+| 12,500.75 | 12.500,75 / 12 500,75 (wrong separators for kami) |
+| 3.5% | 3,5% (decimal comma) |
 | 90% | 90 % (space before percent) |
 | ~$10M | $9,876,543 (false precision reads fake) |
 | 2026.04 | 2026年4月 / April 2026 (when horizontal space is tight) |
 | -> | → |
+
+Always use comma thousands separators for large numbers and a period for decimals in all kami documents, even when source material uses another locale.
 
 ### Language-specific punctuation
 
@@ -370,7 +374,7 @@ Run through before every draft:
 - [ ] At least one **distinctive phrase** (not industry boilerplate)?
 - [ ] Every emphasized (brand-colored) span is either a number or a distinctive phrase? If not, remove the emphasis.
 - [ ] Paragraph lengths even? No paragraph over 5 lines?
-- [ ] Number format consistent (commas, percent signs, arrows)?
+- [ ] Number format consistent (comma thousands separators, period decimals, percent signs, arrows)?
 - [ ] Chinese punctuation and Chinese / Latin spacing consistent where applicable?
 - [ ] Page count within the document's constraint (resume 2, one-pager 1, letter 1)?
 

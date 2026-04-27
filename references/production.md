@@ -463,8 +463,12 @@ mkdir -p ~/.fonts && cp *.ttf ~/.fonts/ && fc-cache -f
 | Use | Avoid |
 |---|---|
 | `5,000+` | `5000+` |
+| `12,500.75` | `12.500,75` / `12 500,75` |
+| `3.5%` | `3,5%` |
 | `90%` | `90 %` (pre-space) |
 | `->` | `->` / `-&gt;` |
+
+Rule: large numbers always use comma thousands separators, and decimals always use a period.
 
 Self-check:
 ```bash
