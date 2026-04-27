@@ -1,13 +1,13 @@
 ---
 name: kami
-description: 'Typeset professional documents in English only: resumes, one-pagers, white papers, letters, portfolios, slide decks. Warm parchment, ink-blue accent, serif-led hierarchy. Triggers on "build me a resume / make a one-pager / design a slide deck / turn this into a PDF / make this presentable".'
+description: 'Typeset professional documents in English only: resumes, one-pagers, white papers, letters, portfolios, slide decks. Warm parchment, ink-blue accent, Calibri-led hierarchy. Triggers on "build me a resume / make a one-pager / design a slide deck / turn this into a PDF / make this presentable".'
 ---
 
 # kami · 紙
 
 **紙 · かみ** - the paper your deliverables land on.
 
-Good content deserves good paper. One design language across eight document types: warm parchment canvas, ink-blue accent, serif-led hierarchy, tight editorial rhythm.
+Good content deserves good paper. One design language across eight document types: warm parchment canvas, ink-blue accent, Calibri-led hierarchy, tight editorial rhythm.
 
 Part of `Kaku · Waza · Kami` - Kaku writes code, Waza drills habits, **Kami delivers documents**.
 
@@ -201,9 +201,9 @@ Visual anomalies (tag double rectangle, font fallback, page break issues) -> `pr
 ## Fonts
 
 **English**
-- Single serif: Charter (system-bundled, macOS/iOS), used for both headlines and body
+- Single font: Calibri, used for headlines, body, labels, and UI
 - No separate sans: `--sans: var(--serif)`, one font per page
-- Fallback: Georgia (cross-platform) / Palatino / Times New Roman
+- Fallback: Carlito / Arial / Helvetica / sans-serif
 
 Font files next to HTML with relative `@font-face` paths is the most stable setup. `scripts/package-skill.sh` excludes any non-English commercial font files from the Claude Desktop ZIP.
 
