@@ -7,10 +7,10 @@ One-page quick reference. Scan before filling a template or tweaking a detail. F
 1. Page background `#f5f4ed` (parchment), never pure white
 2. Single accent: ink-blue `#1B365D`
 3. All grays **warm-toned** (yellow-brown undertone), no cool blue-gray
-4. English: serif for headlines and body. Chinese: serif headlines, sans body. Sans for UI only
+4. English: serif for headlines and body. Sans for UI only
 5. Serif weight locked at 500, no bold
 6. Line-height: headlines 1.1-1.3 / dense 1.4-1.45 / reading 1.5-1.55
-7. Letter-spacing: Chinese body 0.3pt; English body 0; tracking for short labels only
+7. Letter-spacing: English body 0; tracking for short labels only
 8. Tag backgrounds solid hex, no rgba (WeasyPrint double-rectangle bug)
 9. Depth via ring / whisper shadow, no hard drop shadows
 10. No italic in templates or demos
@@ -80,7 +80,7 @@ Minimum floor: web text >= 12px, PDF text >= 9pt.
 
 ## Font stacks
 
-Each language uses a single serif for the entire page. `--sans` always equals `var(--serif)`.
+Use a single serif for the entire page. `--sans` always equals `var(--serif)`.
 
 English:
 
@@ -91,29 +91,6 @@ English:
 --mono:  "JetBrains Mono", "SF Mono", "Fira Code",
          Consolas, Monaco, monospace;
 ```
-
-Chinese:
-
-```css
---serif: "TsangerJinKai02", "Source Han Serif SC",
-         "Noto Serif CJK SC", "Songti SC", "STSong",
-         Georgia, serif;
---sans:  var(--serif);
---mono:  "JetBrains Mono", "SF Mono", Consolas,
-         "TsangerJinKai02", "Source Han Serif SC",
-         monospace;
-```
-
-Japanese:
-
-```css
---serif: "YuMincho", "Yu Mincho", "Hiragino Mincho ProN",
-         "Noto Serif CJK JP", "Source Han Serif JP",
-         "TsangerJinKai02", Georgia, serif;
---sans:  var(--serif);
-```
-
-Any font-family that may render Chinese or Japanese must include a CJK fallback, including `@page` footer text, `pre`, `code`, and SVG labels. A pure mono stack can render missing glyph boxes in WeasyPrint.
 
 ## Spacing (4pt base)
 
