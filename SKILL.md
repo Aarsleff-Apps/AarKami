@@ -198,22 +198,8 @@ Source templates intentionally keep `{{...}}` fields. Run placeholder checks on 
 
 Visual anomalies (tag double rectangle, font fallback, page break issues) -> `production.md` Part 4.
 
-## Colors
-
-- Page background is fixed: `#f5f4ed` parchment. Do not change it to white or brand color.
-- Primary colors allowed: `#005fae`, `#122459`, `#b6e1f2`, `#ffffff`
-- Supplementary colors allowed: `#e4002b`, `#f28705`
-- Default roles:
-  - `#122459` for primary text emphasis, headings, dividers, and high-contrast UI moments
-  - `#005fae` for links, CTA accents, chart primary series, and section markers
-  - `#b6e1f2` for fills, tags, soft panels, and low-contrast data areas
-  - `#ffffff` for cards on parchment and reversed text on dark blue
-  - `#e4002b` and `#f28705` for sparse callouts only: alerts, negative deltas, flags, warnings, or priority markers
-- Keep supplementary colors rare. They should signal exceptions, not become a second brand system.
-
 ## Fonts
 
-**English**
 - Single serif: Charter (system-bundled, macOS/iOS), used for both headlines and body
 - No separate sans: `--sans: var(--serif)`, one font per page
 - Fallback: Georgia (cross-platform) / Palatino / Times New Roman
@@ -228,7 +214,7 @@ When the user gives **vague visual feedback** ("looks off", "not elegant"), do n
 |---|---|
 | "too cramped" | Which element? Line-height (current: X)? Padding (current: Y)? Page margin? |
 | "too loose" | Same direction, reversed |
-| "color feels wrong" | Which element? Is `#122459` too heavy, `#005fae` too loud, or are supplementary colors overused? |
+| "color feels wrong" | Which element? Brand blue overused? A gray reading too cool? |
 | "not polished" | Font rendering? Alignment? Whitespace distribution? Hierarchy unclear? |
 | "unprofessional" | Content wording? Or layout (alignment, consistency)? |
 

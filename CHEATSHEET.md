@@ -5,12 +5,12 @@ One-page quick reference. Scan before filling a template or tweaking a detail. F
 ## Ten invariants
 
 1. Page background `#f5f4ed` (parchment), never pure white
-2. Keep page background fixed at parchment `#f5f4ed`; all other colors come from the approved palette
-3. Primary palette: `#005fae`, `#122459`, `#b6e1f2`, `#ffffff`; supplementary: `#e4002b`, `#f28705`
-4. English: serif for headlines and body. Sans for UI only
+2. Single accent: ink-blue `#005fae`
+3. All grays **warm-toned** (yellow-brown undertone), no cool blue-gray
+4. Serif for headlines and body. Sans for UI only
 5. Serif weight locked at 500, no bold
 6. Line-height: headlines 1.1-1.3 / dense 1.4-1.45 / reading 1.5-1.55
-7. Letter-spacing: English body 0; tracking for short labels only
+7. Letter-spacing: body 0; tracking for short labels only
 8. Tag backgrounds solid hex, no rgba (WeasyPrint double-rectangle bug)
 9. Depth via ring / whisper shadow, no hard drop shadows
 10. No italic in templates or demos
@@ -46,6 +46,18 @@ One-page quick reference. Scan before filling a template or tweaking a detail. F
 | Border Soft  | `#e5e3d8`     | Secondary border · row separator                    |
 
 
+**rgba -> solid** (parchment base + ink-blue):
+
+
+| Alpha    | Solid                       |
+| -------- | --------------------------- |
+| 0.08     | `#EEF2F7`                   |
+| 0.14     | `#E4ECF5`                   |
+| **0.18** | `**#E4ECF5`** ← default tag |
+| 0.22     | `#D0DCE9`                   |
+| 0.30     | `#D6E1EE`                   |
+
+
 ## Type (print pt)
 
 
@@ -68,9 +80,7 @@ Minimum floor: web text >= 12px, PDF text >= 9pt.
 
 ## Font stacks
 
-Use a single serif for the entire page. `--sans` always equals `var(--serif)`.
-
-English:
+Always use a single serif for the entire page. `--sans` always equals `var(--serif)`.
 
 ```css
 --serif: Charter, Georgia, Palatino,
@@ -131,7 +141,7 @@ English:
 
 ```css
 .tag {
-  background: #b6e1f2;
+  background: #EEF2F7;            /* 0.08 equivalent */
   color: var(--brand);
   font-size: 9pt; font-weight: 600;
   padding: 1pt 5pt;
@@ -230,7 +240,7 @@ Twelve built-in diagram types. Extract the `<svg>` block and embed in a `<figure
 
 Usage: extract the `<svg>` block from the HTML file and paste into the template's `<figure>` container.
 
-**Data chart colors**: primary series `#005fae` · dark emphasis `#122459` · soft comparison `#b6e1f2` · alert `#e4002b` · warning `#f28705` · negative space `#ffffff`.
+**Data chart colors**: primary series `#005fae` · secondary `#504e49` → `#6b6a64` → `#b8b7b0` → `#d4d3cd` → `#EEF2F7`.
 
 **Editing data**: only modify elements between `<!-- DATA START -->` / `<!-- DATA END -->`, leave CSS untouched. All coordinates must be divisible by 4.
 
@@ -238,9 +248,9 @@ Usage: extract the `<svg>` block from the HTML file and paste into the template'
 
 Alternate light/dark rhythm: add `.sd-alt` to any section container.
 
-- Background switches to deep blue `#122459`
-- Body text switches to `#ffffff` or `#b6e1f2`
-- Headings switch to `#ffffff`
+- Background switches to `--deep-dark` (`#141413`)
+- Body text switches to `--warm-silver` (`#b0aea5`)
+- Headings switch to `--ivory`
 - Appropriate for: section-level light/dark alternation in long-doc / portfolio
 - Restriction: showcase pages only, never in print templates
 
